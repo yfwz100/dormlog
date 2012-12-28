@@ -1,0 +1,28 @@
+<?php use gtf\Router; ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8" />
+	<title>Error!</title>
+	<link rel="stylesheet" type="text/css" href="<?=Router::res('css/bootstrap.css')?>" />
+	<link rel="stylesheet" type="text/css" href="<?=Router::res('css/info.css')?>" />
+</head>
+<body class="container">
+	<div class="page-header">
+		<h1>Error! <div class="pull-right">&gt;_&lt;</div></h1>
+	</div>
+	<div class="content">
+		<p>The system reports that: </p>
+		<div class="well">
+			<?=$var['message']?>
+		</div>
+		<div class="more">
+		<?php if (isset($var['link'])): ?>
+			<a class="btn btn-primary" href="<?=$var['link']?>">Back</a>
+		<?php else: ?>
+			<a class="btn disabled">Back</a>
+		<?php endif; ?>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    
+    RewriteCond %{SCRIPT_FILENAME} !index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
