@@ -4,10 +4,10 @@ class LoginController extends gtf\AbstractController {
 
 	public function __call($method, $uri) {
 		if (self::isVerified()) {
-			return true;
+			return false;
 		} else {
 			$this->page->template('view/login.phtml');
-			return false;
+			return true;
 		}
 	}
 
@@ -30,7 +30,7 @@ class LoginController extends gtf\AbstractController {
 				$this->error('No such user!');
 			}
 		} catch (Exception $e) {
-			$this->errror($e->getMessage());
+			$this->error($e->getMessage());
 		}
 	}
 
