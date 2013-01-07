@@ -73,11 +73,18 @@ abstract class AbstractPage {
         if (!isset($var)) {
             $var = $this->var;
         }
+
+        ob_start();
         $this->template_impl($file, $var);
+        
         if ($this->templ != null) {
+            ob_end_clean();
+
             $templ = $this->templ;
             $this->templ = null;
             $this->template($templ);
+        } else {
+            ob_end_flush();
         }
     }
 
@@ -91,15 +98,12 @@ abstract class AbstractPage {
         if (!isset($var)) {
             $var = $this->var;
         }
-        $this->inc_impl($template, $var);
-    }
 
-    /**
-     * The function used to include a template.
-     * @param $template the template file.
-     * @param $var the variables used in the page.
-     */
-    protected abstract function inc_impl($template, array $var);
+        $page = new Page;
+        $page->var = $var;
+        $page->page = $this->page;
+        $page->template(dirname(dirname(dirname(__FILE__))).'/view/'.$template);
+    }
 
     /**
      * The function used to find and render the template.
@@ -113,10 +117,6 @@ abstract class AbstractPage {
  * The complete implement of the Gtf Page.
  */
 class Page extends AbstractPage {
-
-    protected function inc_impl($template, array $var) {
-        include dirname(__FILE__) . '/../view/' . $template;
-    }
 
     protected function template_impl($file, array $var) {
         include $file;
