@@ -3,6 +3,7 @@
 class LoginController extends gtf\AbstractController {
 
 	public function __call($method, $uri) {
+    echo $method;
 		if (self::isVerified()) {
 			return false;
 		} else {
@@ -28,9 +29,11 @@ class LoginController extends gtf\AbstractController {
 				$this->done('Login successfully...', 'index.php');
 			} else {
 				$this->error('No such user!');
+        return true;
 			}
 		} catch (Exception $e) {
 			$this->error($e->getMessage());
+      return true;
 		}
 	}
 
