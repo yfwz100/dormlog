@@ -1,0 +1,32 @@
+<?php $this->ext('view/user.phtml'); use gtf\Router;?>
+
+<?php $this->block('tab-content'); ?>
+<form action="<?=Router::site('user.php/update')?>" method="POST" class="form-horizontal">
+  <input type="hidden" name="id" value="<?=$user['id']?>" />
+  <fieldset>
+    <legend>Edit a record</legend>
+    <div class="control-group">
+      <label class="control-label" for="username">User</label>
+      <div class="controls">
+        <input type="text" name="name" disabled="disabled" value="<?=$user['name']?>" placeholder="User name" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" placeholder="Password" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="role">Role</label>
+      <div class="controls">
+        <input type="text" id="role" name="role" value="<?=$user['role']?>" placeholder="Role" />
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn" type="reset">Reset</button>
+    </div>
+  </fieldset>
+</form>
+<?php $this->end(); ?>

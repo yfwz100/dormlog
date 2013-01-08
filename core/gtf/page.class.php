@@ -37,7 +37,8 @@ abstract class AbstractPage {
      * @param $name the name of the block.
      */
     protected function block($name) {
-        $this->tags[] = $name;
+        // $this->tags[] = $name;
+        array_push($this->tags, $name);
         ob_start();
     }
 
@@ -47,13 +48,11 @@ abstract class AbstractPage {
     protected function end() {
         $name = array_pop($this->tags);
         if (!array_key_exists($name, $this->page)) {
-            $this->page[$name] = ob_get_clean();
-        } else {
-            ob_end_clean();
+            $this->page[$name] = ob_get_contents();
         }
-        if ($this->templ == null) {
-            echo $this->page[$name];
-        }
+        // ob_end_flush();
+        ob_end_clean();
+        echo $this->page[$name];
     }
 
     /**
@@ -119,6 +118,9 @@ abstract class AbstractPage {
 class Page extends AbstractPage {
 
     protected function template_impl($file, array $var) {
+        foreach($var as $key => $value) {
+            $$key = $value;
+        }
         include $file;
     }
 

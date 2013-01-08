@@ -1,0 +1,94 @@
+<?php $this->ext('view/base.phtml'); use gtf\Router; ?>
+
+<?php $this->block('head') ?>
+<style type="text/css">
+.page-header {
+  position: relative;
+}
+.logout {
+  position: absolute;
+  right: 0;
+  top: 1em;
+}
+</style>
+<?php $this->end() ?>
+
+<?php $this->block('body') ?>
+<div class="page-header">
+  <h1>User Management</h1>
+  <form action="<?=Router::site('user.php')?>" method="POST">
+    <input type="hidden" name="action" value="logout" />
+    <input type="submit" value="Logout" class="logout" />
+  </form>
+</div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="<?=Router::site('user.php')?>">Users</a>
+    </li>
+    <li class="pull-right">
+      <a href="#add-user" data-toggle="tab"><i class="icon-black icon-plus"></i> Add user</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <?php $this->block('tab-content') ?>
+    <div class="tab-pane active" id="user-list">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php foreach($var['users'] as $value): ?>
+          <tr>
+            <td><?=$value['id']?></td>
+            <td><?=$value['name']?></td>
+            <td><?=$value['role']?></td>
+            <td>
+              <a class="btn btn-mini" data-id="<?=$value['id']?>"
+                href="<?=Router::site('user.php/update')."/$value[id]"?>">Edit</a>
+              <a class="btn btn-mini"
+                href="<?=Router::site('user.php/del')."?id=$value[id]"?>">Delete</a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="add-user">
+      <form action="<?=Router::site('user.php/add')?>" method="POST" class="form-horizontal">
+        <fieldset>
+          <legend>Add a record</legend>
+          <div class="control-group">
+            <label class="control-label" for="username">User</label>
+            <div class="controls">
+              <input type="text" id="username" name="username" placeholder="User name" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+              <input type="password" id="password" name="password" placeholder="Password" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="role">Role</label>
+            <div class="controls">
+              <input type="text" id="role" name="role" placeholder="Role" />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn" type="reset">Reset</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <?php $this->end() ?>
+  </div>
+</div>
+<?php $this->end() ?>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8" /><?php use Gtf\Router; ?>
+	<title>Dorm log - Powered by Gtf</title>
+	<link rel="stylesheet" href="<?=Router::res('css/bootstrap.css')?>" />
+	<link rel="stylesheet" href="<?=Router::res('css/grid.css')?>" />
+	<link rel="stylesheet" href="<?=Router::res('css/task.css')?>" />
+	<script type="text/javascript" src="<?=Router::res('js/jquery.min.js')?>"></script>
+	<?php $this->block('head'); ?><?php $this->end(); ?>
+</head>
+<body class="container">
+	<?php $this->block('body'); ?>
+	<div class="hero-unit">
+		<h1>Welcome to my world!</h1>
+		<p>It seems that the site is under constructing, but feel free to travel along the route...</p>
+		<a class="btn btn-primary">
+			Learn more about us.
+		</a>
+	</div>
+	<?php $this->end(); ?>
+
+	<script type="text/javascript" src="<?=Router::res('js/bootstrap.js')?>"></script>
+</body>
+</html>

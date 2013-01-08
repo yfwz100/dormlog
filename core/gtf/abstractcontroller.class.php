@@ -14,7 +14,7 @@ abstract class AbstractController {
     }
 
 	protected function done($message='Success!', $link=null) {
-        header("Location: ../index.php");
+        header("Location: " . $link);
 
         $this->page->def('link', $link);
         $this->page->def('message', $message);

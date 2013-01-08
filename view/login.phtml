@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf8" />
-	<?php use gtf\Router; ?>
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="<?=Router::res('css/bootstrap.css')?>">
-	<link rel="stylesheet" type="text/css" href="<?=Router::res('css/info.css')?>">
-</head>
-<body>
-	<div class="container">
-		<form class="form-horizontal" action="<?=Router::site('index.php/login')?>" method="POST">
-			<fieldset>
-				<legend>Login</legend>
-				<div class="control-group">
-	                <label class="control-label" for="username">User name: </label>
-	                <div class="controls">
-	                	<input type="text" id="username" name="name" placeholder="your account" />
-	                </div>
-	            </div>
-	            <div class="control-group">
-	                <label class="control-label" for="password">Password: </label>
-	                <div class="controls">
-	                	<input type="password" id="password" name="password" placeholder="your password" />
-	                </div>
-	            </div>
-	            <div class="form-actions">
-	            	<button class="btn btn-primary" type="submit">Login</button>
-	            	<button class="btn" type="reset">Reset</button>
-	            </div>
-			</fieldset>
-		</form>
-	</div>
-</body>
-</html>
+<?php $this->ext('view/base.phtml'); use gtf\Router; ?>
+
+<?php $this->block('body') ?>
+<form class="form-horizontal" action="<?=Router::site('index.php/login')?>" method="POST">
+	<fieldset>
+		<legend>Login</legend>
+		<div class="control-group">
+            <label class="control-label" for="username">User name: </label>
+            <div class="controls">
+            	<input type="text" id="username" name="name" placeholder="your account" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Password: </label>
+            <div class="controls">
+            	<input type="password" id="password" name="password" placeholder="your password" />
+            </div>
+        </div>
+        <div class="form-actions">
+        	<button class="btn btn-primary" type="submit">Login</button>
+        	<button class="btn" type="reset">Reset</button>
+        </div>
+	</fieldset>
+</form>
+<?php $this->end() ?>

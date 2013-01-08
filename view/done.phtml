@@ -1,8 +1,7 @@
-<?php use gtf\Router; ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf8" />
+	<meta charset="utf8" /><?php use gtf\Router; ?>
 	<title>Done</title>
 	<link rel="stylesheet" type="text/css" href="<?=Router::res('css/bootstrap.css')?>" />
 	<link rel="stylesheet" type="text/css" href="<?=Router::res('css/info.css')?>" />
@@ -19,7 +18,7 @@
 			<?php if (isset($var['link'])): ?>
 				<a class="btn btn-primary" href="<?=$var['link']?>">Back</a>
 			<?php else: ?>
-				<a class="btn disabled">Back</a>
+				<a class="btn disabled">Continue</a>
 			<?php endif; ?>
 		</div>
 	</div>

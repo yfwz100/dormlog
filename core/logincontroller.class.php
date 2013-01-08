@@ -3,7 +3,6 @@
 class LoginController extends gtf\AbstractController {
 
 	public function __call($method, $uri) {
-    echo $method;
 		if (self::isVerified()) {
 			return false;
 		} else {
@@ -26,7 +25,7 @@ class LoginController extends gtf\AbstractController {
 				$_SESSION['name'] = $row['name'];
 				$_SESSION['role'] = $row['role'];
 
-				$this->done('Login successfully...', 'index.php');
+				$this->done('Login successfully...', gtf\Router::site('index.php'));
 			} else {
 				$this->error('No such user!');
         return true;
